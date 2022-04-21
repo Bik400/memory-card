@@ -1,0 +1,18 @@
+.card-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 25px;
+    justify-items: center;
+}
+
+.card-div {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: 2px solid #000;
+}
+
+img {
+    width: auto;
+    height: 200px;
+}
