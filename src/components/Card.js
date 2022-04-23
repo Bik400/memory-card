@@ -1,18 +1,11 @@
 import React from "react";
 import "../styles.css";
-import {charData} from "../charData";
 
 const Card = (props) => {
     return (
-        <div className="card-layout">
-            {charData.map((data) => {
-                return (
-                    <div className="card-div" onClick={props.change}>
-                        <img src={data.img} alt={data.name} id={data.id}></img>
-                        <span className="classbro">{data.name}</span>
-                    </div>
-                )
-            })}
+        <div className="card-div" onClick={props.onSelectChar}>
+            <img src={props.char.img} alt={props.char.name} id={props.char.id} className="char-img"></img>
+            <span className="classbro">{props.char.name}</span>
         </div>
     )
 };

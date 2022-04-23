@@ -1,51 +1,45 @@
 import React , { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Card from "./components/Card.js";
-
+import {charData} from "./charData";
 
 function App() {
-  // const [score, setScore] = useState({score: 0, highScore: 0});
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [cardsClicked, setCardsClicked] = useState([]);
 
-  function change (e) {
-    // add the clicked cards into state array
-    let div = e.target.id;
-    // console.log(div);
+  // sort array randomly
+  charData.sort(() => {
+    if (Math.random() > 0.5) return 1;
+    return -1;
+  });
 
-    if (cardsClicked.indexOf(e.target.id) === -1) {
-      setCardsClicked(cardsClicked.concat(div));
-      changeHighScore();
-      setScore(score + 1);
-    } else {
-      setCardsClicked(cardsClicked.filter(() => {
-        return div > 15
-      }));
+  const selectChar = (e) => {
+    let selectedId = e.target.id;
+    if (cardsClicked.includes(selectedId)) {
       setScore(0);
-    }
-  };
-
-  // Randomize the layout when a div is clicked
-
-  function changeHighScore() {
-    if (score >= highScore) {
-      setHighScore(highScore + 1);
+      setCardsClicked([]);
+    } else {
+      setCardsClicked(cardsClicked.concat(selectedId));
+      setScore(score + 1);
     }
   }
 
   useEffect(() => {
-    // randomize layout here
-    console.log(cardsClicked);
-    console.log("The score is: " + score);
-  })
+    if (score <= highScore) return;
+    setHighScore((prevState) => prevState + 1);
+  }, [score, highScore]);
 
   return (
     <div>
       <p>Your score is: {score}</p>
       <p>Your high score is: {highScore}</p>
       <Header />
-      <Card change={change}/>
+      <div className="card-layout">
+        {charData.map((char) => {
+          return <Card onSelectChar={selectChar} char={char}/>
+        })}
+      </div>
     </div>
   );
 }
