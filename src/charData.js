@@ -42,8 +42,8 @@ export const charData = [
     },
     {
         id: "9",
-        img: "../images/zeno.jpg",
-        name: "Zeno"
+        img: "../images/ging.jpg",
+        name: "Ging"
     },
     {
         id: "10",
@@ -52,8 +52,8 @@ export const charData = [
     },
     {
         id: "11",
-        img: "../images/pitou.jpg",
-        name: "Pitou"
+        img: "../images/zushi.jpg",
+        name: "Zushi"
     },
     {
         id: "12",
