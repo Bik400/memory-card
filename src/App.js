@@ -32,9 +32,10 @@ function App() {
 
   return (
     <div>
-      <p>Your score is: {score}</p>
-      <p>Your high score is: {highScore}</p>
-      <Header />
+      <Header score={score} highScore={highScore}/>
+      <div className="rule-h1">
+        <h1>Don't click on the same card more than once!</h1>
+      </div>
       <div className="card-layout">
         {charData.map((char) => {
           return <Card onSelectChar={selectChar} char={char}/>
